@@ -1,0 +1,9 @@
+[Addon]
+Name=vnkey
+Category=InputMethod
+Version=@PROJECT_VERSION@
+Library=vnkey
+Type=SharedLibrary
+OnDemand=True
+Configurable=True
+

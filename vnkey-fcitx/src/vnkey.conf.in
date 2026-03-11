@@ -1,0 +1,8 @@
+[InputMethod]
+Name=Vietnamese (Telex) - vnkey
+Icon=vnkey
+Label=VN
+LangCode=vi
+Addon=vnkey
+Configurable=True
+
