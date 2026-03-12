@@ -17,10 +17,17 @@ const std::unordered_map<std::string, int>& getRimeMainVowelTable() {
         auto add = [&m](const std::string& rime, int main_idx) { m[rime] = main_idx; };
 
         // Single vowels & diphthongs (internal form).
+        // NOTE: internal placeholders: A=ă, B=â, E=ê, O=ô, Q=ơ, U=ư.
         add("a", 0); add("ai", 0); add("ay", 0); add("ao", 0); add("au", 0);
+        add("A", 0); add("B", 0);
         add("e", 0); add("eo", 0); add("i", 0); add("ia", 0); add("iu", 0);
+        add("E", 0);
         add("o", 0); add("oi", 0); add("oa", 0); add("oe", 0);
+        add("O", 0); add("Q", 0);
+        // oai/oay: tone is placed on 'a' (second vowel)
+        add("oai", 1); add("oay", 1);
         add("u", 0); add("ua", 0); add("ui", 0); add("uy", 0);
+        add("U", 0);
         add("y", 0);
 
         // âu, ây

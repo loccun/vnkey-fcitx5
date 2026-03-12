@@ -278,6 +278,10 @@ static void test_any_position_modifiers() {
     // Tone key 'r' before 'n' should still work when Telex shaping is present (oo -> ô).
     assert(telex_to_unicode("oorn") == "ổn");
 
+    // Tone placement for oai/oay: tone must be on 'a' (ngoại, xoáy).
+    assert(telex_to_unicode("ngoaij") == "ngoại");
+    assert(telex_to_unicode("xoays") == "xoáy");
+
 }
 
 static bool has_non_ascii(const std::string& s) {
