@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/sonnam0904/vnkey-fcitx5/compare/v1.1.0...v1.1.1) (2026-03-12)
+
+
+### Bug Fixes
+
+* add support for additional Vietnamese words in Telex conversion ([dcbdcb6](https://github.com/sonnam0904/vnkey-fcitx5/commit/dcbdcb6cf6e63eb9845d05546717912539c67a40))
+
 # [1.1.0](https://github.com/sonnam0904/vnkey-fcitx5/compare/v1.0.0...v1.1.0) (2026-03-12)
 
 
