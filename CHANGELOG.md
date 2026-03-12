@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/sonnam0904/vnkey-fcitx5/compare/v1.0.0...v1.1.0) (2026-03-12)
+
+
+### Features
+
+* handle non-contiguous triple vowels in Telex conversion ([bf03b85](https://github.com/sonnam0904/vnkey-fcitx5/commit/bf03b85e972c22059f2e42b6572267ae60ed0dda))
+
 # 1.0.0 (2026-03-12)
 
 
