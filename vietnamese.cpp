@@ -556,6 +556,30 @@ std::string convert_word(const std::string& word) {
     // 2) Return the WHOLE word (with that collapse) in raw form.
     // 3) Do NOT apply any IME processing (no Telex conversion) on this word.
     {
+        // Special-case for non-contiguous triple vowels where the last two are adjacent.
+        // Example: "telee" (3 x 'e' in word, with "ee" at the cursor) should become "tele",
+        // not "teel"/"telê". We treat this as an escape and bypass IME.
+        for (char v : std::string("aeo")) {
+            int count = 0;
+            for (char c : lower) {
+                if (c == v) ++count;
+            }
+            if (count >= 3) {
+                std::string pat(2, v);
+                std::size_t p = lower.find(pat);
+                if (p != std::string::npos) {
+                    std::string out;
+                    out.reserve(word.size() - 1);
+                    out.append(word.substr(0, p));
+                    // collapse the local double vowel to a single literal (keep first as typed)
+                    out.push_back(word[p]);
+                    std::size_t after = p + 2;
+                    if (after < word.size()) out.append(word.substr(after));
+                    return out;
+                }
+            }
+        }
+
         struct Esc {
             const char* pat;
             int pat_len;

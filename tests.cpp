@@ -91,6 +91,8 @@ static void test_triple_vowels_english() {
     assert(telex_to_unicode("leeech") == "leech");
     assert(telex_to_unicode("cooool") == "coool");
     assert(telex_to_unicode("baaad") == "baad");
+    // Non-contiguous triple with local double at cursor should escape IME.
+    assert(telex_to_unicode("telee") == "tele");
 }
 
 static void test_all_vowel_tone_combinations() {
