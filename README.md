@@ -80,7 +80,10 @@ cmake --build build
 ```bash
 # Ubuntu/Debian
 sudo apt update
-sudo apt install -y fcitx5 fcitx5-configtool libfcitx5core-dev libfcitx5utils-dev
+sudo apt install -y \
+  fcitx5 fcitx5-configtool fcitx5-config-qt fcitx5-module-lua \
+  libfcitx5core-dev libfcitx5utils-dev \
+  extra-cmake-modules cmake build-essential
 
 # Fedora (tên gói có thể thay đổi theo phiên bản)
 sudo dnf install -y fcitx5 fcitx5-configtool fcitx5-devel
