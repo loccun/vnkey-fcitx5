@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/sonnam0904/vnkey-fcitx5/compare/v1.2.0...v1.2.1) (2026-03-17)
+
+
+### Bug Fixes
+
+* **telex:** allow literal typing of "dd" using "ddd" escape in Telex conversion ([dcc105d](https://github.com/sonnam0904/vnkey-fcitx5/commit/dcc105d409661d40df1da7882a00be3a2fc87a66))
+
 # [1.2.0](https://github.com/sonnam0904/vnkey-fcitx5/compare/v1.1.1...v1.2.0) (2026-03-12)
 
 
