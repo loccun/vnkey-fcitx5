@@ -47,6 +47,8 @@ bool applyEscapeRules(const std::string& word, const std::string& lower, std::st
     const Esc escapes[] = {
         {"ss", 2, 1}, {"ff", 2, 1}, {"rr", 2, 1}, {"xx", 2, 1}, {"jj", 2, 1}, {"ww", 2, 1},
         {"aaa", 3, 2}, {"eee", 3, 2}, {"ooo", 3, 2},
+        // Allow typing literal "dd" (avoid Telex dd->đ) by using "ddd" escape.
+        {"ddd", 3, 2},
     };
     std::size_t escPos = std::string::npos;
     const Esc* esc = nullptr;

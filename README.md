@@ -11,7 +11,7 @@ Thiết kế dựa trên **cấu trúc âm tiết tiếng Việt** (*Âm đầu 
 
 ### 1. Cấu trúc thư mục
 
-Trong thư mục gốc `unikey/`:
+Trong thư mục gốc `vnkey/`:
 
 - **`vietnamese.h/.cpp`**: API `telex_to_unicode(const std::string&)` – chuyển một chuỗi Telex thành Unicode.
 - **`engine.h/.cpp`**: lớp `EngineVietCpp` – quản lý buffer gõ theo từng phím, dùng trong fcitx5.
