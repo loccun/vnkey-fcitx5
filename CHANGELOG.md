@@ -1,3 +1,11 @@
+## [1.2.3](https://github.com/sonnam0904/vnkey-fcitx5/compare/v1.2.2...v1.2.3) (2026-03-28)
+
+
+### Bug Fixes
+
+* improve .deb file handling in build script ([75683b5](https://github.com/sonnam0904/vnkey-fcitx5/commit/75683b5ff2b532e8e74a945c316a4cfedf560326))
+* update build process for dual-target .deb packages ([2a52cee](https://github.com/sonnam0904/vnkey-fcitx5/commit/2a52ceeeeaf9ef0c933a036d084e7cc64976e4b5))
+
 ## [1.2.2](https://github.com/sonnam0904/vnkey-fcitx5/compare/v1.2.1...v1.2.2) (2026-03-28)
 
 
