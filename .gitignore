@@ -1,6 +1,8 @@
 # Ignore CMake build directories
 /build/
 **/build/
+# CPack / scripts/build-deb.sh output (name is build-deb, not build)
+**/build-deb/
 
 # CMake-generated files
 CMakeCache.txt
@@ -21,4 +23,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# Debian packages (built locally or by CI; do not commit)
+*.deb
 

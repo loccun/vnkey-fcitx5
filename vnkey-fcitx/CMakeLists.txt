@@ -7,3 +7,22 @@ include("${FCITX_INSTALL_CMAKECONFIG_DIR}/Fcitx5Utils/Fcitx5CompilerSettings.cma
 
 add_subdirectory(src)
 
+if(DEFINED ENV{VNKEY_DEB_PACKAGE_VERSION} AND NOT "$ENV{VNKEY_DEB_PACKAGE_VERSION}" STREQUAL "")
+  set(_vnkey_deb_ver "$ENV{VNKEY_DEB_PACKAGE_VERSION}")
+else()
+  set(_vnkey_deb_ver "${PROJECT_VERSION}")
+endif()
+
+set(CPACK_GENERATOR "DEB")
+set(CPACK_PACKAGE_NAME "vnkey-fcitx5")
+set(CPACK_PACKAGE_VENDOR "vnkey")
+set(CPACK_PACKAGE_VERSION "${_vnkey_deb_ver}")
+set(CPACK_PACKAGE_CONTACT "https://github.com/sonnam0904/vnkey-fcitx5")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "vnkey-fcitx5 <https://github.com/sonnam0904/vnkey-fcitx5>")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Vietnamese Telex input method for fcitx5")
+set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "Vietnamese Telex engine and fcitx5 addon (vnkey). After install, add vnkey in fcitx5-configtool and restart fcitx5.")
+set(CPACK_DEBIAN_PACKAGE_SECTION "utils")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "fcitx5, libfcitx5core5 | libfcitx5core7 | libfcitx5core8 | libfcitx5core9 | libfcitx5core10")
+set(CPACK_DEBIAN_FILE_NAME DEB-DEFAULT)
+include(CPack)
+

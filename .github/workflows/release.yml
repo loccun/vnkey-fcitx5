@@ -11,13 +11,37 @@ permissions:
   pull-requests: write
 
 jobs:
-  release:
+  package-deb:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends build-essential cmake pkg-config libfcitx5core-dev
+
+      - name: Build .deb
+        run: bash scripts/build-deb.sh
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vnkey-fcitx5-deb
+          path: vnkey-fcitx/build-deb/*.deb
+
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends build-essential cmake pkg-config libfcitx5core-dev
 
       - uses: actions/setup-node@v4
         with:

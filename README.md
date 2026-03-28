@@ -120,7 +120,47 @@ fcitx5 -r
 
 Nếu mới cài lần đầu mà chưa thấy `vnkey` trong danh sách input method, hãy **logout/login** hoặc **reboot** máy.
 
-#### 3.3. Cài nhanh bằng script `install.sh`
+#### 3.3. Cài bằng gói `.deb` (Ubuntu / Debian và dòng Debian)
+
+File `.deb` **không nằm trong repo**; mỗi bản được build trên GitHub Actions (hoặc bạn tự chạy `scripts/build-deb.sh` ở máy local). Gói **`vnkey-fcitx5`** chứa addon fcitx5; trường `Depends` kéo **fcitx5** và gói `libfcitx5core*` phù hợp.
+
+**1. Tải `.deb`**
+
+| Nguồn | Cách lấy |
+|--------|-----------|
+| **Releases** | [Releases](https://github.com/sonnam0904/vnkey-fcitx5/releases) → bản có tag semver → tải file `.deb` đính kèm (một file, build trên runner Ubuntu). |
+| **Artifacts** | Tab **Actions** → workflow **Release** trên nhánh `main` → run gần nhất → **Artifacts** → tải `vnkey-fcitx5-deb`. Đây là file ZIP: giải nén sẽ thấy `.deb` (build trên Ubuntu runner của GitHub). |
+
+Tên file trong gói thường dạng `vnkey-fcitx5_<phiên-bản>_amd64.deb` (phiên bản có thể gắn thêm hậu tố commit / build tùy cấu hình CI).
+
+**2. Cài (Ubuntu / Debian — dùng `apt`)**
+
+Vào thư mục chứa file vừa tải (hoặc chỉ đường dẫn đầy đủ). **Phải có `./`** (hoặc đường dẫn tuyệt đối) để `apt` hiểu là file local, không phải tên gói trên mirror:
+
+```bash
+cd ~/Downloads   # ví dụ
+sudo apt update
+sudo apt install -y ./vnkey-fcitx5_*_amd64.deb
+```
+
+Nếu bạn dùng `dpkg` và gặp lỗi thiếu dependency:
+
+```bash
+sudo dpkg -i ./vnkey-fcitx5_*_amd64.deb
+sudo apt-get install -f -y
+```
+
+**3. Sau khi cài**
+
+```bash
+fcitx5 -r
+```
+
+Rồi thêm input method **vnkey** trong `fcitx5-configtool` như **mục 4**. Lần đầu có thể cần **đăng xuất / khởi động lại** session nếu chưa thấy `vnkey` trong danh sách.
+
+**Gỡ:** nếu đã cài bằng `.deb`, dùng **mục 6.1** (`sudo apt remove vnkey-fcitx5`).
+
+#### 3.4. Cài nhanh bằng script `install.sh`
 
 Ở thư mục gốc `unikey/`:
 
@@ -214,7 +254,14 @@ Addon `vnkey` hỗ trợ **2 chế độ chính**:
 
 ### 6. Gỡ cài đặt addon `vnkey`
 
-#### 6.1. Nếu đã cài vào `/usr` (system-wide)
+#### 6.1. Nếu đã cài bằng gói `.deb`
+
+```bash
+sudo apt remove vnkey-fcitx5
+fcitx5 -r
+```
+
+#### 6.2. Nếu đã cài vào `/usr` (system-wide)
 
 ```bash
 sudo rm -f /usr/lib/fcitx5/vnkey.so
@@ -223,7 +270,7 @@ sudo rm -f /usr/share/fcitx5/inputmethod/vnkey.conf
 fcitx5 -r
 ```
 
-#### 6.2. Nếu đã cài vào `$HOME/.local` (user-local)
+#### 6.3. Nếu đã cài vào `$HOME/.local` (user-local)
 
 ```bash
 rm -f "$HOME/.local/lib/fcitx5/vnkey.so"

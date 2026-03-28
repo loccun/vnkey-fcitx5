@@ -10,11 +10,27 @@
       }
     ],
     [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "export VNKEY_DEB_PACKAGE_VERSION=${nextRelease.version} && bash scripts/build-deb.sh"
+      }
+    ],
+    [
       "@semantic-release/git",
       {
         "assets": ["CHANGELOG.md"]
       }
     ],
-    "@semantic-release/github"
+    [
+      "@semantic-release/github",
+      {
+        "assets": [
+          {
+            "path": "vnkey-fcitx/build-deb/*.deb",
+            "label": "Debian amd64 (.deb)"
+          }
+        ]
+      }
+    ]
   ]
 }
