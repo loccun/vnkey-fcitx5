@@ -42,11 +42,26 @@ docker run --rm \
     bash scripts/build-deb.sh
   '
 
-shopt -s nullglob
-for f in "${ROOT}/vnkey-fcitx/build-deb"/*.deb; do
-  mv "$f" "${OUT}/"
-done
-shopt -u nullglob
+# Docker runs as root; .deb files are root-owned on the host — plain mv fails for CI user (e.g. runner).
+move_deb_to_release() {
+  local f dest
+  shopt -s nullglob
+  for f in "${ROOT}/vnkey-fcitx/build-deb"/*.deb; do
+    dest="${OUT}/$(basename "$f")"
+    if [[ -O "$f" ]]; then
+      mv "$f" "$dest"
+    elif command -v sudo >/dev/null 2>&1; then
+      sudo mv "$f" "$dest"
+      sudo chown "$(id -un):$(id -gn)" "$dest"
+    else
+      echo "ERROR: cannot move root-owned file (install sudo or run as root): $f" >&2
+      exit 1
+    fi
+  done
+  shopt -u nullglob
+}
+
+move_deb_to_release
 
 echo "Release .deb artifacts:"
 ls -la "${OUT}"
