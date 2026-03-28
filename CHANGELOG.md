@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/sonnam0904/vnkey-fcitx5/compare/v1.2.1...v1.2.2) (2026-03-28)
+
+
+### Bug Fixes
+
+* update build process for Debian packages and enhance README instructions ([89afc8e](https://github.com/sonnam0904/vnkey-fcitx5/commit/89afc8ea35ac694bb758cc174d56789e5b5c1369))
+
 ## [1.2.1](https://github.com/sonnam0904/vnkey-fcitx5/compare/v1.2.0...v1.2.1) (2026-03-17)
 
 
