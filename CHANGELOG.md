@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/sonnam0904/vnkey-fcitx5/compare/v1.2.3...v1.2.4) (2026-03-29)
+
+
+### Bug Fixes
+
+* **engine:** allow Enter key to commit buffer and send messages immediately (Thank you hthienloc) ([272bad8](https://github.com/sonnam0904/vnkey-fcitx5/commit/272bad8aa825a1b58a36aca465d794852cfe5c0b))
+
 ## [1.2.3](https://github.com/sonnam0904/vnkey-fcitx5/compare/v1.2.2...v1.2.3) (2026-03-28)
 
 
